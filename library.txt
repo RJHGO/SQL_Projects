@@ -1,0 +1,307 @@
+CREATE database Library;
+
+USE Library;
+
+CREATE TABLE Library_Branch (
+    BranchID int NOT NULL PRIMARY KEY,
+    BranchName varchar(255),
+    Address varchar(255),
+); 
+
+INSERT INTO Library_Branch
+    (BranchID, BranchName, Address)
+	VALUES
+	('1', 'Sharpstown', 'Ne Braodway'),
+	('2', 'Central', 'Sw Main'),
+	('3', 'Westend', 'Sw Pac hwy'),
+	('4', 'Eastlake', 'Rose st')
+	;
+	
+CREATE TABLE Books (
+    BookID int NOT NULL PRIMARY KEY,
+    Title varchar(255),
+    PublisherName varchar(255)
+); 
+
+INSERT INTO Books
+(BookID, Title, PublisherName)
+   VALUES
+   ('1', 'High Plains', 'GRPress'),
+   ('2', 'Red Rock', 'McPherson'),
+   ('3', 'Turning point', 'B&M'),
+   ('4', 'Strange moon', 'GRPress'),
+   ('5', 'The collection', 'GR,Sweeny'),
+   ('6', 'Teachers Pet', 'B&M'),
+   ('7', 'Meltdown', 'SweenYress'),
+   ('8', 'The Reason', 'GRPress'),
+   ('9', 'In The Dark', 'B&M'),
+   ('10', 'Final Measure', 'BigPrint'),
+   ('11', 'Fun With Numbers', 'GRPress'),
+   ('12', 'Fun with Letters', 'B&M'),
+   ('13', 'Alien rock band', 'GR,Sweeny'),
+   ('14', 'Working with wood', 'BrantPublishing'),
+   ('15', 'Travel smart', 'GR,Sweeny'),
+   ('16', 'CarsNmore', 'B&M'),
+   ('17', 'Wild night', 'BrantPublishing'),
+   ('18', 'The Human condition', 'GR,Sweeny'),
+   ('19', 'Misery', 'CBS'),
+   ('20', 'The Shinning', 'CBS')
+   ;
+   INSERT INTO Books
+   VALUES
+   ('21', 'The Lost Tribe', 'XYZPublishing')
+   ;
+
+CREATE TABLE Book_Copies (
+    BookID int NOT NULL PRIMARY KEY,
+    BranchID int,
+    Number_of_copies int 
+); 
+
+INSERT INTO Book_Copies
+   (BookID, BranchID, Number_of_copies)
+   VALUES
+   ('1', '1', '15'),
+   ('2', '2', '15'),
+   ('3', '3', '15'),
+   ('4', '4', '15'),
+   ('5', '1', '15'),
+   ('6', '2', '15'),
+   ('7', '3', '15'),
+   ('8', '4', '15'),
+   ('9', '1', '15'),
+   ('10', '2', '15'),
+   ('11', '3', '15'),
+   ('12', '4', '15'),
+   ('13', '1', '15'),
+   ('14', '2', '15'),
+   ('15', '3', '15'),
+   ('16', '4', '15'),
+   ('17', '1', '15'),
+   ('18', '2', '15'),
+   ('19', '2', '15'),
+   ('20', '2', '15'),
+   ('21', '3', '14')
+   ;
+  
+CREATE TABLE Book_Authors (
+    BookID int NOT NULL PRIMARY KEY,
+    AuthorName VARCHAR(255)
+); 
+
+INSERT INTO Book_Authors
+    (BookID, AuthorName)
+	VALUES
+	('1', 'Rain Wilson'),
+   ('2', 'Tom Jones' ),
+   ('3', 'Maybel Watson'),
+   ('4', 'Starla Jones'),
+   ('5', 'Mark Hamill'),
+   ('6', 'John Jameson'),
+   ('7', 'Zeek Ham'),
+   ('8', 'Amy Smart'),
+   ('9', 'Doc Martin'),
+   ('10', 'Betty Crocker'),
+   ('11', 'Tom Ace'),
+   ('12', 'Bart Simpson'),
+   ('13', 'Ned Kelly'),
+   ('14', 'James Woodword'),
+   ('15', 'Steve Perry'),
+   ('16', 'Ozzy Williams'),
+   ('17', 'Michell Jackson'),
+   ('18', 'Alan Iverson'),
+   ('19', 'Stephen King'),
+   ('20', 'Stephen King'),
+   ('21', 'Joe Jackson')
+   ;
+
+CREATE TABLE Publisher (
+    PublisherName VARCHAR (255) NOT NULL PRIMARY KEY,
+    PublisherAddress VARCHAR(255),
+    Phone VARCHAR(255)
+); 
+
+INSERT INTO Publisher
+	(PublisherName, PublisherAddress, Phone)
+	 VALUES
+   ('GRPress','101 Somestreet','968-4545'),
+   ('B&M','103 Somestreet','212-4545'),
+   ('GR,Sweeny','105 Somestreet','444-4545'),
+   ('SweenYress','107 Somestreet','666-4545'),
+   ('BigPrint','110 Somestreet','453-4545'),
+   ('BrantPublishing','114 Somestreet','982-4545'),
+   ('CBS','119 Somestreet','220-4845')
+   ;
+   
+CREATE TABLE Book_Loans (
+    BookID int,
+    BranchID int,
+    CardNo int,
+    DateOut VARCHAR(255),
+    DateDue VARCHAR(255) 
+); 
+
+INSERT INTO Book_Loans
+(BookID, BranchID, CardNo, DateOut, DateDue)
+	VALUES
+	('1', '1', '5', '9-07-2019', '9-14-2019'), 
+	('2', '2', '10', '9-1-2019', '9-15-2019'),
+	('3', '3', '15', '9-20-2019', '10-4-2019'),
+	('4', '4', '20', '8-28-2019', '9-12-2019'),
+	('5', '1', '25', '9-5-2019', '9-11-2019'),
+	('6', '2', '30', '8-25-2019', '9-19-2019'),
+	('7', '3', '35',  '9-2-2019', '9-14-2019'),
+	('8', '4', '40', '9-9-2019', '9-20-2019'),
+	('9', '1', '5', '9-07-2019', '9-14-2019'),
+	('10', '2', '10', '9-1-2019', '9-15-2019'),
+	('11', '3', '15', '9-20-2019', '10-4-2019'),
+	('12', '4', '20', '8-28-2019', '9-12-2019'),
+	('13', '1', '25', '9-5-2019', '9-11-2019'),
+	('14', '2', '30', '8-25-2019', '9-19-2019'),
+	('15', '3', '35',  '9-2-2019', '9-14-2019'),
+	('16', '4', '40', '9-9-2019', '9-20-2019'),
+	('17', '1', '40', '9-9-2019', '9-20-2019'),
+	('18', '2', '5', '9-07-2019', '9-14-2019'),
+	('19', '3', '10', '9-1-2019', '9-15-2019'),
+	('20', '4', '15', '9-20-2019', '10-4-2019'),
+	('21', '1', '20', '8-28-2019', '9-12-2019'),
+	('1', '2', '25', '9-5-2019', '9-11-2019'),
+	('2', '3', '30', '8-25-2019', '9-19-2019'),
+	('3', '4', '35',  '9-2-2019', '9-14-2019'),
+	('4', '1', '40', '9-9-2019', '9-20-2019'),
+	('5', '2', '5', '9-07-2019', '9-14-2019'),
+	('6', '3', '10', '9-1-2019', '9-15-2019'),
+	('7', '4', '15', '9-20-2019', '10-4-2019'),
+	('8', '1', '20', '8-28-2019', '9-12-2019'),
+	('9', '2', '25', '9-5-2019', '9-11-2019'),
+	('10', '3', '30', '8-25-2019', '9-19-2019'),
+	('11', '4', '35',  '9-2-2019', '9-14-2019'),
+	('12', '1', '40', '9-9-2019', '9-20-2019'),
+	('13', '2', '5', '9-07-2019', '9-14-2019'),
+	('14', '3', '10', '9-1-2019', '9-15-2019'),
+	('15', '4', '15', '9-20-2019', '10-4-2019'),
+	('16', '1', '20', '8-28-2019', '9-12-2019'),
+	('17', '2', '25', '9-5-2019', '9-11-2019'),
+	('18', '3', '30', '8-25-2019', '9-19-2019'),
+	('19', '4', '35',  '9-2-2019', '9-14-2019'),
+	('20', '1', '40', '9-9-2019', '9-20-2019'),
+	('21', '2', '40', '9-9-2019', '9-20-2019'),
+	('1', '3', '5', '9-07-2019', '9-14-2019'),
+	('5', '4', '10', '9-1-2019', '9-15-2019'),
+	('11', '1', '15', '9-20-2019', '10-4-2019'),
+	('14', '4', '20', '8-28-2019', '9-12-2019'),
+	('20', '1', '25', '9-5-2019', '9-11-2019'),
+	('2', '2', '30', '8-25-2019', '9-19-2019'),
+	('10', '3', '35',  '9-2-2019', '9-14-2019'),
+	('15', '4', '40', '9-9-2019', '9-20-2019')
+	;
+
+
+CREATE TABLE Borrower (
+    CardNo int NOT NULL PRIMARY KEY,
+    LastName varchar(30),
+    FirstName varchar(30),
+    Address varchar(75),
+    City varchar(30),
+	Loans varchar(30)
+); 
+
+INSERT INTO Borrower
+	(CardNo, LastName, FirstName, Address, City, Loans)
+		VALUES
+		('5', 'Smith', 'John', '1605 Ne Oak', 'Aloha','3'),
+		('10', 'Jennings', 'Bill', '105 Sw Stark', 'Portland','7'),
+		('15', 'Billington', 'Joe', '2005 Ne Sunrise', 'Beaverton','5'),
+		('20', 'Hammel', 'ally', '112 Sw Jersey st', 'Hillsboro','1'),
+		('25', 'Vitar', 'Chris', '1817 Park Pls', 'Tigard','5'),
+		('30', 'Clark', 'Kelly', '1112 Avery Blvd', 'Aloha','1'),
+		('35', 'Wesson', 'Sally', '1650 Ne Sparks', 'Forest Grove','2'),
+		('40', 'Porter', 'Mark', '3485 SW Billings Ave', 'Aloha','3')
+		;
+
+		INSERT INTO Borrower
+			VALUES
+			('41', 'James', 'Sam', '5501 SW Bender', 'Gresham', '0')
+			;
+
+
+/* Final Library queries */
+
+
+/*1*/
+CREATE PROCEDURE LostTribeInSharstown
+AS
+
+SELECT Number_of_copies, Title, BranchName
+FROM BOOKS
+INNER JOIN BOOK_COPIES ON BOOK_COPIES.BOOKID = BOOKS.BOOKID 
+INNER JOIN Library_Branch ON Library_Branch.BranchID = Book_Copies.BranchID
+WHERE Books.Title = 'The Lost Tribe' and BranchName = 'Sharpstown';
+
+EXEC lostTribeInSharstown;
+/*2*/
+
+CREATE PROC lostTribeEachBranch
+AS
+
+SELECT Book_Copies.Number_of_copies, Books.Title, Library_Branch.*
+FROM Book_Copies 
+INNER JOIN Books ON Book_Copies.BookID = Books.BookID 
+INNER JOIN Library_Branch ON Book_Copies.BranchID = Library_Branch.BranchID
+WHERE  Books.Title = 'The Lost Tribe';
+
+/*3*/
+
+CREATE PROC ZEROCHECKEDOUT
+AS
+
+SELECT borrower.FirstName, Book_Loans.DateOut  
+FROM Borrower
+FULL OUTER JOIN book_loans ON Borrower.cardNo = Book_Loans.cardNo
+WHERE book_loans.cardNO IS NULL
+;
+
+/*4*/
+CREATE PROC DueDateToday
+AS
+
+SELECT Library_Branch.BranchName, Book_Loans.DateDue, Books.Title, Borrower.FirstName, Borrower.Address
+FROM Library_Branch
+INNER JOIN Book_Loans ON Library_Branch.BranchID = Book_Loans.BranchID 
+INNER JOIN Books ON Book_Loans.BookID = Books.BookID 
+INNER JOIN Borrower ON Book_Loans.CardNo = Borrower.CardNo
+WHERE Book_Loans.DateDue = '9-19-2019' AND Library_Branch.BranchName = 'Sharpstown';
+
+/*5*/
+
+CREATE PROC TotalBooksFromEachBranch
+AS
+
+SELECT COUNT(*) AS Booksout, Library_Branch.BranchName
+FROM Library_Branch
+INNER JOIN Book_Loans ON Book_Loans.BranchID = Library_Branch.BranchID
+GROUP BY Library_Branch.BranchName
+
+/*6*/
+
+CREATE PROC NamesAddressesNumberofBooks
+AS
+
+SELECT COUNT (Borrower.cardNo) AS AllBooksOut, Borrower.CardNo, Borrower.FirstName, Borrower.Address
+FROM Borrower
+INNER JOIN Book_Loans ON Borrower.CardNo = Book_Loans.CardNo
+GROUP BY Borrower.CardNo, Borrower.FirstName, Borrower.Address
+HAVING COUNT(*) > 5
+
+/*7*/
+
+CREATE PROC StephanKingCentral
+AS
+
+SELECT COUNT(Book_Copies.Number_of_copies)AS COPIESOWNED, Book_Authors.AuthorName, Book_Copies.Number_of_copies, Library_Branch.BranchName
+FROM Books
+INNER JOIN Book_Authors ON Books.BookID = Book_Authors.BookID
+INNER JOIN Book_Copies ON Books.BookID = Book_Copies.BookID
+INNER JOIN Library_Branch ON Book_Copies.BranchID = Library_Branch.BranchID
+GROUP BY Book_authors.AuthorName , Books.Title, Book_Copies.Number_of_copies, Library_Branch.BranchName
+HAVING Book_Authors.AuthorName = 'Stephen King'
